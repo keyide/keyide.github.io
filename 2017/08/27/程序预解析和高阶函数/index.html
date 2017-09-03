@@ -7,21 +7,21 @@
   
   
   
-  <title>构造函数-原型对象-实例（一） | hello</title>
+  <title>预解析和高阶函数 | hello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="构造函数-原型对象-实例 ：     构造函数-原型对象-实例三者的简单介绍">
-<meta name="keywords" content="构造函数">
+  <meta name="description" content="程序预解析和高阶函数 ：     关于程序预解析和高阶函数">
+<meta name="keywords" content="预解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="构造函数-原型对象-实例（一）">
-<meta property="og:url" content="http://yoursite.com/2017/08/27/构造函数-原型对象-实例-一/index.html">
+<meta property="og:title" content="预解析和高阶函数">
+<meta property="og:url" content="http://yoursite.com/2017/08/27/程序预解析和高阶函数/index.html">
 <meta property="og:site_name" content="hello">
-<meta property="og:description" content="构造函数-原型对象-实例 ：     构造函数-原型对象-实例三者的简单介绍">
-<meta property="og:image" content="https://i.imgur.com/j964KLe.png">
-<meta property="og:updated_time" content="2017-09-02T15:28:38.058Z">
+<meta property="og:description" content="程序预解析和高阶函数 ：     关于程序预解析和高阶函数">
+<meta property="og:image" content="https://i.imgur.com/nYgjk7j.png">
+<meta property="og:updated_time" content="2017-09-03T17:02:30.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="构造函数-原型对象-实例（一）">
-<meta name="twitter:description" content="构造函数-原型对象-实例 ：     构造函数-原型对象-实例三者的简单介绍">
-<meta name="twitter:image" content="https://i.imgur.com/j964KLe.png">
+<meta name="twitter:title" content="预解析和高阶函数">
+<meta name="twitter:description" content="程序预解析和高阶函数 ：     关于程序预解析和高阶函数">
+<meta name="twitter:image" content="https://i.imgur.com/nYgjk7j.png">
   
     <link rel="alternative" href="/atom.xml" title="hello" type="application/atom+xml">
   
@@ -266,11 +266,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-构造函数-原型对象-实例-一" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-程序预解析和高阶函数" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2017/08/27/构造函数-原型对象-实例-一/" class="article-date">
-      <time datetime="2017-08-27T02:09:18.000Z" itemprop="datePublished">2017-08-27</time>
+      <a  href="/2017/08/27/程序预解析和高阶函数/" class="article-date">
+      <time datetime="2017-08-27T04:35:04.000Z" itemprop="datePublished">2017-08-27</time>
 </a>
 
     </div>
@@ -284,7 +284,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      构造函数-原型对象-实例（一）
+      预解析和高阶函数
     </h1>
   
 
@@ -294,13 +294,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+    <a class="article-category-link" href="/categories/函数/">函数</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构造函数/">构造函数</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/预解析/">预解析</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -310,56 +310,50 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> 构造函数-原型对象-实例 ：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>    构造函数-原型对象-实例三者的简单介绍<br><a id="more"></a></excerpt></p>
+        <p><strong> 程序预解析和高阶函数 ：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>    关于程序预解析和高阶函数<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
 
-<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><ul>
-<li>其实构造函数就是普通函数，它使得创建对象的方式更为优雅，而且可以判断实例和构造函数的关系（instanceof和constructor属性）</li>
+<h3 id="程序预解析"><a href="#程序预解析" class="headerlink" title="程序预解析"></a>程序预解析</h3><ul>
+<li>在js程序执行之前，浏览器会先对程序进行预解析，在预解析时浏览器会先对变量赋值和函数声明进行处理</li>
 </ul>
-<h4 id="构造函数的调用"><a href="#构造函数的调用" class="headerlink" title="构造函数的调用"></a>构造函数的调用</h4><ul>
-<li>使用 new 操作符调用函数就叫做构造函数调用</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name；</div><div class="line">  <span class="keyword">this</span>.age = age；</div><div class="line">  <span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'helloi '</span> + <span class="keyword">this</span>.name)；</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'小明'</span>, <span class="number">18</span>)；</div><div class="line">p1.sayHello()；</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在预解析阶段浏览器已经读取变量 foo，但没有赋值，所以执行语句时是 undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> foo); <span class="comment">// undefined </span></div><div class="line"><span class="comment">// 在预解析阶段浏览器已经读取完成函数 fn 的读取，并覆盖了前面定义的变量 fn,所以执行语句时是 function</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn); <span class="comment">// function </span></div><div class="line"><span class="keyword">var</span> fn = <span class="number">123</span>;</div><div class="line"><span class="keyword">var</span> foo = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 函数表达式类似于普通变量赋值，在预解析阶段不会读取赋值部分</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn); <span class="comment">// number </span></div><div class="line"><span class="comment">// 在执行阶段阶段时，浏览器将对变量进行赋值，因而覆盖掉了函数 fn，</span></div><div class="line"><span class="comment">// 而因为 fn 在预解析时已经读取完成，若不进行调用，浏览器将不会再去读取，所以所以执行语句时是 number</span></div></pre></td></tr></table></figure>
 <ul>
-<li>如果使用 new 操作符调用该函数，则实际：<ol>
-<li>先创建一个对象 var instance = {}</li>
-<li>然后将内部的 this 指向 instance   this = instance</li>
-<li>用户通过操作 this 从而操作 instance</li>
-<li>在方法代码的最后将 this 或者 instance 作为返回值默认返回</li>
-</ol>
-</li>
+<li>当浏览器进行预解析时，遇到变量赋值的语句，浏览器会先将变量读取，但不读取赋值，变量的赋值将在执行程序时在进行(变量提示)；</li>
+<li>而遇到函数声明时（不是函数表达式），浏览器会将整个函数的声明全部读取完成(函数提升)，在执行程序时，若不进行调用，浏览器将不会再去读取</li>
+<li>函数表达式类似于普通变量赋值，在预解析阶段不会读取赋值部分，在执行阶段才进行赋值</li>
 </ul>
-<h4 id="构造函数和实例的关系"><a href="#构造函数和实例的关系" class="headerlink" title="构造函数和实例的关系"></a>构造函数和实例的关系</h4><ul>
-<li>constructor 和 instanceof 都可以用来判断实例与构造函数的关系</li>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><ul>
+<li>所谓的高阶函数就是指，函数可以当作参数进行传递，也当作返回值进行返回</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'小明'</span>, <span class="number">18</span>)；</div><div class="line"><span class="built_in">console</span>.log(p2.constructor === Person)； <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<h4 id="函数当作参数进行传递"><a href="#函数当作参数进行传递" class="headerlink" title="函数当作参数进行传递"></a>函数当作参数进行传递</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>(<span class="params">time, fn</span>) </span>&#123;	<span class="comment">//函数当作参数进行传递</span></div><div class="line">  setTimeout(fn, time);</div><div class="line">&#125;</div><div class="line">wait(<span class="number">2000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="函数当作返回值进行返回"><a href="#函数当作返回值进行返回" class="headerlink" title="函数当作返回值进行返回"></a>函数当作返回值进行返回</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isArray = generateCheckTypeFn(<span class="string">'[object Array]'</span>);	<span class="comment">//函数当作返回值进行返回</span></div><div class="line"><span class="keyword">var</span> isObject = generateCheckTypeFn(<span class="string">'[object Object]'</span>);</div><div class="line"><span class="keyword">var</span> isString = generateCheckTypeFn(<span class="string">'[object String]'</span>);</div><div class="line"><span class="keyword">var</span> isNumber = generateCheckTypeFn(<span class="string">'[object Number]'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateCheckTypeFn</span>(<span class="params">type</span>) </span>&#123;  <span class="comment">// 每调用一次 generateCheckTypeFn 内部就要创建一个函数作为返回值 </span></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</div><div class="line">true<span class="comment">// 这里借用的是 Object.prototype 对象里的 toString 方法，此方法返回目标数据的数据类型</span></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === type； </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="创建函数的方式"><a href="#创建函数的方式" class="headerlink" title="创建函数的方式"></a>创建函数的方式</h3><h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'f1'</span>)；</div><div class="line">&#125;</div><div class="line">f1();</div></pre></td></tr></table></figure>
 <ul>
-<li>constructor 和 instanceof 都可以用来判断生成实例的构造函数是谁,但是建议使用 instanceof，至于为什么会在下篇中讲到</li>
+<li>函数声明有函数提升,在预解析阶段，如果发现有同名的变量和函数声明，则以函数为主，但是到了执行阶段，如果同名变量赋值执行过了，则会把同名的函数声明给覆盖掉了</li>
 </ul>
-<h4 id="构造函数的弊端"><a href="#构造函数的弊端" class="headerlink" title="构造函数的弊端"></a>构造函数的弊端</h4><ul>
-<li>构造函数每 new 一次，就会在创建一个函数，而且不同实例中相同的函数方法就会生成多次</li>
-</ul>
-<h3 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h3><ul>
-<li>原型对象将构造函数时用到的相同的方法独立出来，实例单独调用即可，大大减少了代码冗余</li>
-</ul>
-<h4 id="原型对象的定义"><a href="#原型对象的定义" class="headerlink" title="原型对象的定义"></a>原型对象的定义</h4><ul>
-<li>每一个构造函数都有一个属性：prototype，prototype 本身就是一个对象，它指向构造函数的原型对象</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// this 指向实例对象</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'张三'</span>, <span class="number">18</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'李四'</span>, <span class="number">16</span>);</div><div class="line"><span class="built_in">console</span>.log(p2.sayHello === p1.sayHello); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(p1.sayHello === Person.prototype.sayHello); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<h4 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f2=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'f2'</span>)；</div><div class="line">&#125;</div><div class="line">f2();</div></pre></td></tr></table></figure>
 <ul>
-<li>同一个构造函数的所有实例对象都可以访问到构造函数的原型对象</li>
+<li>函数表达式没有函数提升，只有变量提升</li>
+<li>根据一些条件来定义生成不同的函数,则这个时候建议使用函数表达式</li>
 </ul>
-<h4 id="原型对象的使用"><a href="#原型对象的使用" class="headerlink" title="原型对象的使用"></a>原型对象的使用</h4><ul>
-<li>因为由同一个构造函数生成的实例都可以访问到构造函数的原型对象，所以可以将多个实例需要用到的函数方法定义到原型对象中，所用的实例都可以自行调用方法</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// this 指向实例对象</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hello '</span> + <span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'张三'</span>, <span class="number">18</span>);</div><div class="line">p1.sayHello();  <span class="comment">//原型对象的调用</span></div></pre></td></tr></table></figure>
+<h4 id="new-Function-创建函数"><a href="#new-Function-创建函数" class="headerlink" title="new Function 创建函数"></a>new Function 创建函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'return a + b + c'</span>);</div></pre></td></tr></table></figure>
 <ul>
-<li>当你访问实例上的某个成员的时候，会先在自己身上找,如果自己身上没有，则去原型对象中查找,如果原型对象中也没有，则会沿着原型链向上查找（关于原型链将在下一篇中讲到）</li>
+<li>这是通过 Function 构造函数来创建函数</li>
+<li>Function 构造函数的最后一个参数是函数体：字符串的形式，最后一个参数前面的所有参数都是形参</li>
+<li>new Function 的形式会在执行阶段根据参数解析创建函数的执行</li>
+<li>它也有一个好处：可以根据字符串来生成函数</li>
 </ul>
-<h3 id="构造函数-原型对象-实例三者关系"><a href="#构造函数-原型对象-实例三者关系" class="headerlink" title="构造函数-原型对象-实例三者关系"></a>构造函数-原型对象-实例三者关系</h3><p><img src="https://i.imgur.com/j964KLe.png" alt="图解"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFn</span>(<span class="params">condition,a,b</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> functionBody = <span class="string">''</span>;</div><div class="line">  <span class="keyword">if</span> (condition) &#123;</div><div class="line">    functionBody = <span class="string">'console.log(a + b)'</span>；</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    functionBody = <span class="string">'return a + b'</span>；</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, functionBody)；</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fn = getFn(<span class="literal">true</span>,a,b)；</div><div class="line">fn(<span class="literal">true</span>, <span class="number">1</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure>
 <ul>
-<li>构造函数中本身就有 prototype 属性，prototype 指向构造函数的原型对象，而实例对象在主流浏览器中也可以通过 <em>proto</em> 属性访问到原型对象，而在原型对象中本身就存在属性 constructor 指向自己的构造函数，当实例对象通过 .constructor 获取自己的构造函数名时，其实是到原型对象中获取的属性值</li>
+<li>根据条件生成不同的函数,字符串的方式控制起来更灵活,做一个高层次的框架设计的时候会用到这个东西</li>
+</ul>
+<h3 id="函数的原型链"><a href="#函数的原型链" class="headerlink" title="函数的原型链"></a>函数的原型链</h3><ul>
+<li>函数也是对象，函数也有自己的原型，所以也就有原型链</li>
+</ul>
+<p><img src="https://i.imgur.com/nYgjk7j.png" alt="函数原型链"></p>
+<ul>
+<li>创建一个新的函数，其实就是通过 Function 构造函数生成了一个新的实例，所以所有实例函数的<code>_proto_</code>都指向 Function 的原型对象，Function 自己的<code>_proto_</code>也指向自己的原型对象，也就是说：所有实例函数的<code>_proto_</code>都指向 Function.prototype ,Function.prototype 的<code>_proto_</code>指向 Object.prototype, Object.prototype 的<code>_proto_</code>指向 null,这就是函数的原型链</li>
 </ul>
 </the>
       
@@ -369,13 +363,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2017/08/27/构造函数-原型对象-实例-一/">构造函数-原型对象-实例（一）</a></p>
+        <p><span>本文标题:</span><a  href="/2017/08/27/程序预解析和高阶函数/">预解析和高阶函数</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 keyide 的个人博客">keyide</a></p>
-        <p><span>发布时间:</span>2017年08月27日 - 10时09分</p>
-        <!-- <p><span>最后更新:</span>2017年09月02日 - 23时28分</p> -->
+        <p><span>发布时间:</span>2017年08月27日 - 12时35分</p>
+        <!-- <p><span>最后更新:</span>2017年09月04日 - 01时02分</p> -->
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/08/27/构造函数-原型对象-实例-一/" title="构造函数-原型对象-实例（一）">http://yoursite.com/2017/08/27/构造函数-原型对象-实例-一/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/27/构造函数-原型对象-实例-一/　　作者: keyide" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/27/程序预解析和高阶函数/" title="预解析和高阶函数">http://yoursite.com/2017/08/27/程序预解析和高阶函数/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/27/程序预解析和高阶函数/　　作者: keyide" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -386,18 +380,18 @@
 
 <nav id="article-nav">
   
-    <a  href="/2017/08/27/构造函数-原型对象-实例-二/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2017/08/27/函数作用域和闭包/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          构造函数-原型对象-实例（二）
+          函数作用域和闭包
         
       </div>
     </a>
   
   
-    <a  href="/2017/08/27/call,apply,bind使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">call,apply,bind使用</div>
+    <a  href="/2017/08/27/构造函数-原型对象-实例-二/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">构造函数-原型对象-实例（二）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -409,7 +403,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数"><span class="toc-number">1.</span> <span class="toc-text">构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#构造函数的调用"><span class="toc-number">1.1.</span> <span class="toc-text">构造函数的调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造函数和实例的关系"><span class="toc-number">1.2.</span> <span class="toc-text">构造函数和实例的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造函数的弊端"><span class="toc-number">1.3.</span> <span class="toc-text">构造函数的弊端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型对象"><span class="toc-number">2.</span> <span class="toc-text">原型对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原型对象的定义"><span class="toc-number">2.1.</span> <span class="toc-text">原型对象的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原型对象的使用"><span class="toc-number">2.2.</span> <span class="toc-text">原型对象的使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数-原型对象-实例三者关系"><span class="toc-number">3.</span> <span class="toc-text">构造函数-原型对象-实例三者关系</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序预解析"><span class="toc-number">1.</span> <span class="toc-text">程序预解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高阶函数"><span class="toc-number">2.</span> <span class="toc-text">高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数当作参数进行传递"><span class="toc-number">2.1.</span> <span class="toc-text">函数当作参数进行传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数当作返回值进行返回"><span class="toc-number">2.2.</span> <span class="toc-text">函数当作返回值进行返回</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建函数的方式"><span class="toc-number">3.</span> <span class="toc-text">创建函数的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数声明"><span class="toc-number">3.1.</span> <span class="toc-text">函数声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数表达式"><span class="toc-number">3.2.</span> <span class="toc-text">函数表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new-Function-创建函数"><span class="toc-number">3.3.</span> <span class="toc-text">new Function 创建函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的原型链"><span class="toc-number">4.</span> <span class="toc-text">函数的原型链</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -480,13 +474,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2017/08/27/构造函数-原型对象-实例-二/" title="上一篇: 构造函数-原型对象-实例（二）">
+            <a  href="/2017/08/27/函数作用域和闭包/" title="上一篇: 函数作用域和闭包">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2017/08/27/call,apply,bind使用/" title="下一篇: call,apply,bind使用">
+            <a  href="/2017/08/27/构造函数-原型对象-实例-二/" title="下一篇: 构造函数-原型对象-实例（二）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
