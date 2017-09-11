@@ -18,7 +18,7 @@
 <meta property="og:description" content="构造函数-原型对象-实例(二) ：     读写原型对象成员，instanceof和constructor解析，原型链解析">
 <meta property="og:image" content="https://i.imgur.com/KSLLMvB.png">
 <meta property="og:image" content="https://i.imgur.com/N6lAcJp.png">
-<meta property="og:updated_time" content="2017-09-02T15:27:00.694Z">
+<meta property="og:updated_time" content="2017-09-05T17:01:41.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构造函数-原型对象-实例（二）">
 <meta name="twitter:description" content="构造函数-原型对象-实例(二) ：     读写原型对象成员，instanceof和constructor解析，原型链解析">
@@ -194,7 +194,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/预解析/" style="font-size: 10px;">预解析</a>
+                        <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a> <a href="/tags/选择器/" style="font-size: 10px;">选择器</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/预解析/" style="font-size: 10px;">预解析</a>
                     </div>
                 </section>
                 
@@ -332,7 +332,8 @@
 </ul>
 <h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params">foo</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.foo = foo;</div><div class="line">&#125;</div><div class="line">F.prototype.sayFoo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo);</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.prototype.a = <span class="number">123</span>;</div><div class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> F();</div><div class="line"><span class="built_in">console</span>.log(f.a);  <span class="comment">// 123</span></div></pre></td></tr></table></figure>
 <ul>
-<li>对象属性的搜索访问机制：原型链,<br>当你访问对象的某个成员的时候,先在自己身上找，找到即返回使用,找不到,则沿着原型链向上查找,如果在上一个原型对象中找到，则返回使用,如果找不到，则继续沿着原型链查找,直到 Object.prototype 如果还找不到，则继续查找  Object.prototype.<code>_proto_</code> ,这个时候发现 Object.prototype.<code>_proto_</code> 是 null，则停止查找，返回 undefined<br>所以原型链的末端是 null，原型链倒数第二个是 Object.prototype</li>
+<li>对象属性的搜索访问机制：原型链,<br>当你访问对象的某个成员的时候,先在自己身上找，找到即返回使用,找不到,则沿着原型链向上查找,如果在上一个原型对象中找到，则返回使用,如果找不到，则继续沿着原型链查找,直到 Object.prototype 如果还找不到，则继续查找  Object.prototype.<code>_proto_</code> ,这个时候发现 Object.prototype.<code>_proto_</code> 是 null，则停止查找，返回 undefined</li>
+<li>所以原型链的末端是 null，原型链倒数第二个是 Object.prototype</li>
 </ul>
 <p><img src="https://i.imgur.com/KSLLMvB.png" alt="图解"></p>
 <ul>
@@ -354,7 +355,7 @@
         <p><span>本文标题:</span><a  href="/2017/08/27/构造函数-原型对象-实例-二/">构造函数-原型对象-实例（二）</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 keyide 的个人博客">keyide</a></p>
         <p><span>发布时间:</span>2017年08月27日 - 10时45分</p>
-        <!-- <p><span>最后更新:</span>2017年09月02日 - 23时27分</p> -->
+        <!-- <p><span>最后更新:</span>2017年09月06日 - 01时01分</p> -->
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/27/构造函数-原型对象-实例-二/" title="构造函数-原型对象-实例（二）">http://yoursite.com/2017/08/27/构造函数-原型对象-实例-二/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/27/构造函数-原型对象-实例-二/　　作者: keyide" title=""></span>
@@ -368,11 +369,11 @@
 
 <nav id="article-nav">
   
-    <a  href="/2017/08/27/程序预解析和高阶函数/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2017/08/27/选择器/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          预解析和高阶函数
+          选择器整理
         
       </div>
     </a>
@@ -462,7 +463,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2017/08/27/程序预解析和高阶函数/" title="上一篇: 预解析和高阶函数">
+            <a  href="/2017/08/27/选择器/" title="上一篇: 选择器整理">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -473,7 +474,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/函数作用域和闭包/">函数作用域和闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/程序预解析和高阶函数/">预解析和高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/构造函数-原型对象-实例-二/">构造函数-原型对象-实例（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/构造函数-原型对象-实例-一/">构造函数-原型对象-实例（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/call,apply,bind使用/">call,apply,bind使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/this指向问题/">this问题</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/数组方法整理/">数组方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/字符串方法整理/">字符串方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/函数闭包/">闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/函数作用域/">函数作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/程序预解析和高阶函数/">预解析和高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/方法整理/">方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/选择器/">选择器整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/构造函数-原型对象-实例-二/">构造函数-原型对象-实例（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/构造函数-原型对象-实例-一/">构造函数-原型对象-实例（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/call,apply,bind使用/">call,apply,bind使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/this指向问题/">this问题</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

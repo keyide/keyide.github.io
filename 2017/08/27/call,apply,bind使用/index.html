@@ -16,7 +16,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/27/call,apply,bind使用/index.html">
 <meta property="og:site_name" content="hello">
 <meta property="og:description" content="call,apply,bind使用 ：     call,apply,bind使用介绍及解析">
-<meta property="og:updated_time" content="2017-09-02T15:29:31.463Z">
+<meta property="og:updated_time" content="2017-09-05T17:00:38.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="call,apply,bind使用">
 <meta name="twitter:description" content="call,apply,bind使用 ：     call,apply,bind使用介绍及解析">
@@ -191,7 +191,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/预解析/" style="font-size: 10px;">预解析</a>
+                        <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/方法/" style="font-size: 10px;">方法</a> <a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a> <a href="/tags/选择器/" style="font-size: 10px;">选择器</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/预解析/" style="font-size: 10px;">预解析</a>
                     </div>
                 </section>
                 
@@ -325,7 +325,8 @@
 </ul>
 <h3 id="apply-的使用"><a href="#apply-的使用" class="headerlink" title="apply 的使用"></a>apply 的使用</h3><h4 id="指定内部-this-指向-1"><a href="#指定内部-this-指向-1" class="headerlink" title="指定内部 this 指向"></a>指定内部 this 指向</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x,y</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  foo: <span class="string">'bar'</span></div><div class="line">&#125;</div><div class="line">fn.call(obj,[x,y])</div></pre></td></tr></table></figure>
 <ul>
-<li>函数的 apply 方法可以实现将函数内部 this 指向 apply 的第一个参数，然后调用该函数，并以数组进行传参，apply 会把数组中的元素一个一个的拿出来作为函数的参数，并且 apply 只处理一个参数和第二个传参参数，其它的不处理</li>
+<li>函数的 apply 方法可以实现将函数内部 this 指向 apply 的第一个参数，然后调用该函数</li>
+<li>apply 以数组进行传参，apply 会把数组中的元素一个一个的拿出来作为函数的参数，并且 apply 只处理一个参数和第二个传参参数，其它的不处理</li>
 </ul>
 <h4 id="进行方法借用-1"><a href="#进行方法借用-1" class="headerlink" title="进行方法借用"></a>进行方法借用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">32</span>, <span class="number">1</span>, <span class="number">13</span>, <span class="number">2</span>, <span class="number">43</span>]</div><div class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, arr)</div></pre></td></tr></table></figure>
 <ul>
@@ -350,7 +351,7 @@
         <p><span>本文标题:</span><a  href="/2017/08/27/call,apply,bind使用/">call,apply,bind使用</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 keyide 的个人博客">keyide</a></p>
         <p><span>发布时间:</span>2017年08月27日 - 09时20分</p>
-        <!-- <p><span>最后更新:</span>2017年09月02日 - 23时29分</p> -->
+        <!-- <p><span>最后更新:</span>2017年09月06日 - 01时00分</p> -->
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/27/call,apply,bind使用/" title="call,apply,bind使用">http://yoursite.com/2017/08/27/call,apply,bind使用/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/27/call,apply,bind使用/　　作者: keyide" title=""></span>
@@ -469,7 +470,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/函数作用域和闭包/">函数作用域和闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/程序预解析和高阶函数/">预解析和高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/构造函数-原型对象-实例-二/">构造函数-原型对象-实例（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/构造函数-原型对象-实例-一/">构造函数-原型对象-实例（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/call,apply,bind使用/">call,apply,bind使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/this指向问题/">this问题</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/数组方法整理/">数组方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/字符串方法整理/">字符串方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/函数闭包/">闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/函数作用域/">函数作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/程序预解析和高阶函数/">预解析和高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/方法整理/">方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/选择器/">选择器整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/构造函数-原型对象-实例-二/">构造函数-原型对象-实例（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/构造函数-原型对象-实例-一/">构造函数-原型对象-实例（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/call,apply,bind使用/">call,apply,bind使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/this指向问题/">this问题</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
