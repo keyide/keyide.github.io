@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>预解析和高阶函数 | hello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="程序预解析和高阶函数 ：     关于程序预解析和高阶函数">
+<meta name="keywords" content="预解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="预解析和高阶函数">
+<meta property="og:url" content="http://yoursite.com/2017/08/27/05-程序预解析和高阶函数/index.html">
+<meta property="og:site_name" content="hello">
+<meta property="og:description" content="程序预解析和高阶函数 ：     关于程序预解析和高阶函数">
+<meta property="og:image" content="https://i.imgur.com/nYgjk7j.png">
+<meta property="og:updated_time" content="2017-09-03T17:02:30.086Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="预解析和高阶函数">
+<meta name="twitter:description" content="程序预解析和高阶函数 ：     关于程序预解析和高阶函数">
+<meta name="twitter:image" content="https://i.imgur.com/nYgjk7j.png">
+  
+    <link rel="alternative" href="/atom.xml" title="hello" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">keyide</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder=" Search...">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/开发工具/">玩转开发工具</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                            <li><a  href="/tags">静心阅读</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/keyide/" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/预解析/" style="font-size: 10px;">预解析</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://github.com/keyide/">keyide</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/疏影横斜水清浅">Personal Website</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专打鹰酱，不疼不要小钱钱</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">keyide</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">keyide</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/开发工具/">玩转开发工具</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                    <li><a href="/tags">静心阅读</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/keyide/" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-05-程序预解析和高阶函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/08/27/05-程序预解析和高阶函数/" class="article-date">
+      <time datetime="2017-08-27T04:35:04.000Z" itemprop="datePublished">2017-08-27</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      预解析和高阶函数
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/函数/">函数</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/预解析/">预解析</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> 程序预解析和高阶函数 ：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>    关于程序预解析和高阶函数<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+<h3 id="程序预解析"><a href="#程序预解析" class="headerlink" title="程序预解析"></a>程序预解析</h3><ul>
+<li>在js程序执行之前，浏览器会先对程序进行预解析，在预解析时浏览器会先对变量赋值和函数声明进行处理</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在预解析阶段浏览器已经读取变量 foo，但没有赋值，所以执行语句时是 undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> foo); <span class="comment">// undefined </span></div><div class="line"><span class="comment">// 在预解析阶段浏览器已经读取完成函数 fn 的读取，并覆盖了前面定义的变量 fn,所以执行语句时是 function</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn); <span class="comment">// function </span></div><div class="line"><span class="keyword">var</span> fn = <span class="number">123</span>;</div><div class="line"><span class="keyword">var</span> foo = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 函数表达式类似于普通变量赋值，在预解析阶段不会读取赋值部分</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'hello'</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn); <span class="comment">// number </span></div><div class="line"><span class="comment">// 在执行阶段阶段时，浏览器将对变量进行赋值，因而覆盖掉了函数 fn，</span></div><div class="line"><span class="comment">// 而因为 fn 在预解析时已经读取完成，若不进行调用，浏览器将不会再去读取，所以所以执行语句时是 number</span></div></pre></td></tr></table></figure>
+<ul>
+<li>当浏览器进行预解析时，遇到变量赋值的语句，浏览器会先将变量读取，但不读取赋值，变量的赋值将在执行程序时在进行(变量提示)；</li>
+<li>而遇到函数声明时（不是函数表达式），浏览器会将整个函数的声明全部读取完成(函数提升)，在执行程序时，若不进行调用，浏览器将不会再去读取</li>
+<li>函数表达式类似于普通变量赋值，在预解析阶段不会读取赋值部分，在执行阶段才进行赋值</li>
+</ul>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><ul>
+<li>所谓的高阶函数就是指，函数可以当作参数进行传递，也当作返回值进行返回</li>
+</ul>
+<h4 id="函数当作参数进行传递"><a href="#函数当作参数进行传递" class="headerlink" title="函数当作参数进行传递"></a>函数当作参数进行传递</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>(<span class="params">time, fn</span>) </span>&#123;	<span class="comment">//函数当作参数进行传递</span></div><div class="line">  setTimeout(fn, time);</div><div class="line">&#125;</div><div class="line">wait(<span class="number">2000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="函数当作返回值进行返回"><a href="#函数当作返回值进行返回" class="headerlink" title="函数当作返回值进行返回"></a>函数当作返回值进行返回</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isArray = generateCheckTypeFn(<span class="string">'[object Array]'</span>);	<span class="comment">//函数当作返回值进行返回</span></div><div class="line"><span class="keyword">var</span> isObject = generateCheckTypeFn(<span class="string">'[object Object]'</span>);</div><div class="line"><span class="keyword">var</span> isString = generateCheckTypeFn(<span class="string">'[object String]'</span>);</div><div class="line"><span class="keyword">var</span> isNumber = generateCheckTypeFn(<span class="string">'[object Number]'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateCheckTypeFn</span>(<span class="params">type</span>) </span>&#123;  <span class="comment">// 每调用一次 generateCheckTypeFn 内部就要创建一个函数作为返回值 </span></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</div><div class="line">true<span class="comment">// 这里借用的是 Object.prototype 对象里的 toString 方法，此方法返回目标数据的数据类型</span></div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === type； </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="创建函数的方式"><a href="#创建函数的方式" class="headerlink" title="创建函数的方式"></a>创建函数的方式</h3><h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'f1'</span>)；</div><div class="line">&#125;</div><div class="line">f1();</div></pre></td></tr></table></figure>
+<ul>
+<li>函数声明有函数提升,在预解析阶段，如果发现有同名的变量和函数声明，则以函数为主，但是到了执行阶段，如果同名变量赋值执行过了，则会把同名的函数声明给覆盖掉了</li>
+</ul>
+<h4 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f2=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'f2'</span>)；</div><div class="line">&#125;</div><div class="line">f2();</div></pre></td></tr></table></figure>
+<ul>
+<li>函数表达式没有函数提升，只有变量提升</li>
+<li>根据一些条件来定义生成不同的函数,则这个时候建议使用函数表达式</li>
+</ul>
+<h4 id="new-Function-创建函数"><a href="#new-Function-创建函数" class="headerlink" title="new Function 创建函数"></a>new Function 创建函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'return a + b + c'</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>这是通过 Function 构造函数来创建函数</li>
+<li>Function 构造函数的最后一个参数是函数体：字符串的形式，最后一个参数前面的所有参数都是形参</li>
+<li>new Function 的形式会在执行阶段根据参数解析创建函数的执行</li>
+<li>它也有一个好处：可以根据字符串来生成函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFn</span>(<span class="params">condition,a,b</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> functionBody = <span class="string">''</span>;</div><div class="line">  <span class="keyword">if</span> (condition) &#123;</div><div class="line">    functionBody = <span class="string">'console.log(a + b)'</span>；</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    functionBody = <span class="string">'return a + b'</span>；</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, functionBody)；</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fn = getFn(<span class="literal">true</span>,a,b)；</div><div class="line">fn(<span class="literal">true</span>, <span class="number">1</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li>根据条件生成不同的函数,字符串的方式控制起来更灵活,做一个高层次的框架设计的时候会用到这个东西</li>
+</ul>
+<h3 id="函数的原型链"><a href="#函数的原型链" class="headerlink" title="函数的原型链"></a>函数的原型链</h3><ul>
+<li>函数也是对象，函数也有自己的原型，所以也就有原型链</li>
+</ul>
+<p><img src="https://i.imgur.com/nYgjk7j.png" alt="函数原型链"></p>
+<ul>
+<li>创建一个新的函数，其实就是通过 Function 构造函数生成了一个新的实例，所以所有实例函数的<code>_proto_</code>都指向 Function 的原型对象，Function 自己的<code>_proto_</code>也指向自己的原型对象，也就是说：所有实例函数的<code>_proto_</code>都指向 Function.prototype ,Function.prototype 的<code>_proto_</code>指向 Object.prototype, Object.prototype 的<code>_proto_</code>指向 null,这就是函数的原型链</li>
+</ul>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2017/08/27/05-程序预解析和高阶函数/">预解析和高阶函数</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 keyide 的个人博客">keyide</a></p>
+        <p><span>发布时间:</span>2017年08月27日 - 12时35分</p>
+        <!-- <p><span>最后更新:</span>2017年09月04日 - 01时02分</p> -->
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/27/05-程序预解析和高阶函数/" title="预解析和高阶函数">http://yoursite.com/2017/08/27/05-程序预解析和高阶函数/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/27/05-程序预解析和高阶函数/　　作者: keyide" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2017/08/27/10-ajax/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          ajax
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2017/08/27/06-函数作用域/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数作用域</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序预解析"><span class="toc-number">1.</span> <span class="toc-text">程序预解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高阶函数"><span class="toc-number">2.</span> <span class="toc-text">高阶函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数当作参数进行传递"><span class="toc-number">2.1.</span> <span class="toc-text">函数当作参数进行传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数当作返回值进行返回"><span class="toc-number">2.2.</span> <span class="toc-text">函数当作返回值进行返回</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建函数的方式"><span class="toc-number">3.</span> <span class="toc-text">创建函数的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数声明"><span class="toc-number">3.1.</span> <span class="toc-text">函数声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数表达式"><span class="toc-number">3.2.</span> <span class="toc-text">函数表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new-Function-创建函数"><span class="toc-number">3.3.</span> <span class="toc-text">new Function 创建函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的原型链"><span class="toc-number">4.</span> <span class="toc-text">函数的原型链</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2017/08/27/10-ajax/" title="上一篇: ajax">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2017/08/27/06-函数作用域/" title="下一篇: 函数作用域">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/07-函数闭包/">闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/09-字符串方法整理/">字符串方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/08-数组方法整理/">数组方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/10-ajax/">ajax</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/05-程序预解析和高阶函数/">预解析和高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/06-函数作用域/">函数作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/04-构造函数-原型对象-实例-二/">构造函数-原型对象-实例（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/03-构造函数-原型对象-实例-一/">构造函数-原型对象-实例（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/02-call,apply,bind使用/">call,apply,bind使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/01-this指向问题/">this问题</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <!-- &copy; 2017 keyide -->
+				&copy; 2017 <a href="https://github.com/keyide" target="_blank"> keyide</a> 
+            </div>
+            <div class="footer-right">
+                <!-- <a href="http://hexo.io/" target="_blank">Hexo</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy -->
+                Powered by<a href="http://hexo.io/" target="_blank"> Hexo </a>and Theme by <a href="https://github.com/maochunguang" target="_blank">tommy</a>
+            </div>
+        </div>
+        
+            <div class="visit">
+				<!--
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+				-->
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 4;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
