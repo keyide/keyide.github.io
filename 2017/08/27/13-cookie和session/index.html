@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>session 和 cookie | hello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="session 和 cookie ：      session 和 cookie 整理">
+<meta name="keywords" content="cookie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="session 和 cookie">
+<meta property="og:url" content="http://yoursite.com/2017/08/27/13-cookie和session/index.html">
+<meta property="og:site_name" content="hello">
+<meta property="og:description" content="session 和 cookie ：      session 和 cookie 整理">
+<meta property="og:updated_time" content="2017-10-05T16:51:15.938Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="session 和 cookie">
+<meta name="twitter:description" content="session 和 cookie ：      session 和 cookie 整理">
+  
+    <link rel="alternative" href="/atom.xml" title="hello" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">keyide</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder=" Search...">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/开发工具/">玩转开发工具</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                            <li><a  href="/tags">静心阅读</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/keyide/" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/call/" style="font-size: 10px;">call</a> <a href="/tags/ckeditor/" style="font-size: 20px;">ckeditor</a> <a href="/tags/cookie/" style="font-size: 10px;">cookie</a> <a href="/tags/datepicker/" style="font-size: 10px;">datepicker</a> <a href="/tags/form/" style="font-size: 10px;">form</a> <a href="/tags/jsonp/" style="font-size: 10px;">jsonp</a> <a href="/tags/require-js/" style="font-size: 10px;">require.js</a> <a href="/tags/this/" style="font-size: 10px;">this</a> <a href="/tags/uploadify/" style="font-size: 10px;">uploadify</a> <a href="/tags/validate/" style="font-size: 10px;">validate</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/原型链/" style="font-size: 10px;">原型链</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/构造函数/" style="font-size: 10px;">构造函数</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a> <a href="/tags/预解析/" style="font-size: 10px;">预解析</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://github.com/keyide/">keyide</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="/疏影横斜水清浅">Personal Website</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专打鹰酱，不疼不要小钱钱</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">keyide</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">keyide</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/开发工具/">玩转开发工具</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                    <li><a href="/tags">静心阅读</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/keyide/" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-13-cookie和session" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/08/27/13-cookie和session/" class="article-date">
+      <time datetime="2017-08-27T07:35:48.000Z" itemprop="datePublished">2017-08-27</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      session 和 cookie
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/cookie/">cookie</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> session 和 cookie ：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>     session 和 cookie 整理<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+<h3 id="session-和-cookie-的定义以及区别"><a href="#session-和-cookie-的定义以及区别" class="headerlink" title="session 和 cookie 的定义以及区别"></a>session 和 cookie 的定义以及区别</h3><ul>
+<li>session 保存在服务器，客户端不知道其中的信息；cookie 保存在客户端，服务器能够知道其中的信息</li>
+<li>session 中保存的是对象，cookie 中保存的是字符串</li>
+<li>session 在用户会话结束后就会关闭了，但 cookie 因为保存在客户端，可设置删除时间，以长期保存</li>
+<li>session 不能区分路径，同一个用户在访问一个网站期间，所有的 session 在任何一个地方都可以访问到。而cookie 中如果设置了路径参数，那么同一个网站中不同路径下的 cookie 互相是访问不到的</li>
+<li>session 默认需要借助 cookie 才能正常工作。如果客户端完全禁止 cookie，session 这种方法将失效。<ul>
+<li>但是如果服务器端启用了 url 编码，也就是用 URLEncoder.encode(“index.jsp?id=3”,”UTF-8”);把所有的 url 编码了，则会在 url 后面出现如下类似的东西 index.jsp:jsessionid=fdsaffjdlksfd124324lkdjsf?id=3 服务器通过这个进行 session 的判断</li>
+</ul>
+</li>
+<li>cookie 是服务端向客户端写入的片段信息。cookie 信息保存在服务器缓存区，不会在客户端显现。当你第一次登陆一个网站，服务器向你的机器写得片段信息。你可以在 Internet 选项中找到存放 cookie 的文件夹。如果不删除，cookie 就一直在这个文件夹中</li>
+</ul>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><ul>
+<li>session 是存在服务器上的</li>
+<li>每个 session 有一个唯一的 session ID（为了标识他是那个客户端的）</li>
+<li>在启动 session 的同时，服务器会在客户端生成 cookie，服务器把 session ID 加到 cookie 中，默认路径为 ‘/‘</li>
+<li>每次服务器和客户端交互的时候，就是从 cookie 中取得 session ID 来定位服务器上的 session</li>
+<li>这样只要你的 cookie 不过期，服务器上有你的 session，就不会出问题</li>
+<li>如果浏览器不支持 cookies，或者将浏览器设置为不接受 cookies，我们可以通过 URL 重写来实现会话管理，实质上 URL 重写是通过向 URL 连接添加参数，并把 session ID 作为值包含在连接中。然而，为使这生效，你需要为你的 servlet 响应部分的每个连接添加 session ID </li>
+</ul>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><h4 id="cookie-的分类"><a href="#cookie-的分类" class="headerlink" title="cookie 的分类"></a>cookie 的分类</h4><ul>
+<li>session cookie (会话 cookie)<ul>
+<li>浏览器关闭后 session cookie 就消失，其实 session cookie 是用来配合 session 工作的</li>
+</ul>
+</li>
+<li>persistant cookie (持久 cookie)<ul>
+<li>会把 cookie 存储到浏览器指定的文件中，存储指定的时间</li>
+</ul>
+</li>
+</ul>
+<h4 id="cookie-的基本操作"><a href="#cookie-的基本操作" class="headerlink" title="cookie 的基本操作"></a>cookie 的基本操作</h4><ul>
+<li>cookie 的获取</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.cookie);</div></pre></td></tr></table></figure>
+<ul>
+<li>cookie 的设置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.cookie=<span class="string">"username=xgg"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.cookie); <span class="comment">// "username=xgg;"</span></div><div class="line"><span class="built_in">document</span>.cookie=<span class="string">"age=11"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.cookie); <span class="comment">// "username=xgg; age=11"</span></div><div class="line"><span class="built_in">document</span>.cookie=<span class="string">"hehe=hehe; haha=haha"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.cookie); <span class="comment">// "username=xgg; age=11; hehe=hehe"  // 一次只能设置一个</span></div></pre></td></tr></table></figure>
+<ul>
+<li>cookie 存储时间的设置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">date.setDate(date.getDate() + <span class="number">7</span>); <span class="comment">// 将时间对象设置为七天后</span></div><div class="line"><span class="built_in">document</span>.cookie=<span class="string">'username=xgg； expires='</span>+ date.toGMTString(); <span class="comment">// 设置 cookie 保存七天</span></div></pre></td></tr></table></figure>
+<ul>
+<li>cookie 存储位置的设置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.cookie=<span class="string">'username=xgg; path=/'</span>; <span class="comment">// 设置 cookie 保存在根路径下,默认为'/cookie'</span></div></pre></td></tr></table></figure>
+<h4 id="获取指定-cookie-值方法封装"><a href="#获取指定-cookie-值方法封装" class="headerlink" title="获取指定 cookie 值方法封装"></a>获取指定 cookie 值方法封装</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">key</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> all = <span class="built_in">document</span>.cookie;</div><div class="line">  <span class="keyword">var</span> result = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">if</span>(all)&#123;</div><div class="line">    <span class="keyword">var</span> karr = all.split(<span class="string">'; '</span>);</div><div class="line">    karr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">      <span class="keyword">var</span> kv = item.split(<span class="string">'='</span>);</div><div class="line">      <span class="keyword">if</span>(key == kv[<span class="number">0</span>])&#123;</div><div class="line">        <span class="comment">// 找到对应的cookie</span></div><div class="line">        result = kv[<span class="number">1</span>];</div><div class="line">        <span class="comment">// 终止forEach循环</span></div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="设置-cookie-值方法封装"><a href="#设置-cookie-值方法封装" class="headerlink" title="设置 cookie 值方法封装"></a>设置 cookie 值方法封装</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">key,value,options</span>)</span>&#123; <span class="comment">// options 对象传入存储时间和路径(待改进)</span></div><div class="line">  <span class="keyword">var</span> cookie = key + <span class="string">'='</span> + value;</div><div class="line">  <span class="keyword">if</span>(options)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> options)&#123;</div><div class="line">      cookie += <span class="string">'; '</span> + key + <span class="string">'='</span> + options[key];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">document</span>.cookie = cookie;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">date.setDate(date.getDate() + <span class="number">1</span>);</div><div class="line">setCookie(<span class="string">'hello'</span>,<span class="string">'abc'</span>,&#123;</div><div class="line">  expires : date.toGMTString(),</div><div class="line">  path : <span class="string">'/'</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(getCookie(<span class="string">'hello'</span>));</div></pre></td></tr></table></figure>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2017/08/27/13-cookie和session/">session 和 cookie</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 keyide 的个人博客">keyide</a></p>
+        <p><span>发布时间:</span>2017年08月27日 - 15时35分</p>
+        <!-- <p><span>最后更新:</span>2017年10月06日 - 00时51分</p> -->
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/27/13-cookie和session/" title="session 和 cookie">http://yoursite.com/2017/08/27/13-cookie和session/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/27/13-cookie和session/　　作者: keyide" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2017/08/27/14-require.js 的基本使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          require.js的基本使用
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2017/08/27/12-jsonp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jsonp</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#session-和-cookie-的定义以及区别"><span class="toc-number">1.</span> <span class="toc-text">session 和 cookie 的定义以及区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#session"><span class="toc-number">2.</span> <span class="toc-text">session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie"><span class="toc-number">3.</span> <span class="toc-text">cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie-的分类"><span class="toc-number">3.1.</span> <span class="toc-text">cookie 的分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie-的基本操作"><span class="toc-number">3.2.</span> <span class="toc-text">cookie 的基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取指定-cookie-值方法封装"><span class="toc-number">3.3.</span> <span class="toc-text">获取指定 cookie 值方法封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置-cookie-值方法封装"><span class="toc-number">3.4.</span> <span class="toc-text">设置 cookie 值方法封装</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2017/08/27/14-require.js 的基本使用/" title="上一篇: require.js的基本使用">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2017/08/27/12-jsonp/" title="下一篇: jsonp">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/20-Jcrop 插件的基本使用/">Jcrop 图片裁剪插件的基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/19-ckeditor 插件的基本使用/">ckeditor 富文本插件的基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/18-uploadify 插件的基本使用/">uploadify 文件上传插件的基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/17-form 插件的基本使用/">form 表单提交插件的基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/16-validater 插件的基本使用/">validate 表单验证插件的基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/15-datepicker 插件的基本使用/">datepicker 日期选择插件的基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/14-require.js 的基本使用/">require.js的基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/13-cookie和session/">session 和 cookie</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/12-jsonp/">jsonp</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/11-同源和跨域/">同源和跨域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/10-ajax/">ajax</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/08-数组方法整理/">数组方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/09-字符串方法整理/">字符串方法整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/07-函数闭包/">闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/06-函数作用域/">函数作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/05-程序预解析和高阶函数/">预解析和高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/04-构造函数-原型对象-实例-二/">构造函数-原型对象-实例（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/03-构造函数-原型对象-实例-一/">构造函数-原型对象-实例（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/27/02-call,apply,bind使用/">call,apply,bind使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/01-this指向问题/">this问题</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <!-- &copy; 2017 keyide -->
+				&copy; 2017 <a href="https://github.com/keyide" target="_blank"> keyide</a> 
+            </div>
+            <div class="footer-right">
+                <!-- <a href="http://hexo.io/" target="_blank">Hexo</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy -->
+                Powered by<a href="http://hexo.io/" target="_blank"> Hexo </a>and Theme by <a href="https://github.com/maochunguang" target="_blank">tommy</a>
+            </div>
+        </div>
+        
+            <div class="visit">
+				<!--
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+				-->
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 4;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
