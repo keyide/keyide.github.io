@@ -16,7 +16,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/27/11-同源和跨域/index.html">
 <meta property="og:site_name" content="hello">
 <meta property="og:description" content="同源和跨域 ：      同源和跨域的区别及跨域的解决方案">
-<meta property="og:updated_time" content="2017-09-16T13:46:09.496Z">
+<meta property="og:updated_time" content="2017-10-18T13:09:51.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同源和跨域">
 <meta name="twitter:description" content="同源和跨域 ：      同源和跨域的区别及跨域的解决方案">
@@ -326,12 +326,12 @@
 <li>这就实现了相同顶级域名子页面的操作问题</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;iframe id=&quot;iframe&quot; src=&quot;http://api.study.com/domain.html&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  // 这种情况适合 顶级域名相同的情况</div><div class="line">  // 需要配置一个二级域名</div><div class="line">  document.domain = &apos;study.com&apos;;</div><div class="line">  var iframe = document.getElementById(&apos;iframe&apos;);</div><div class="line">  iframe.onload = function () &#123;</div><div class="line">true  var contentWin = iframe.contentWindow;</div><div class="line">true  contentWin.document.getElementById(&apos;txt&apos;).style.color = &apos;red&apos;;</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h4 id="window-name-iframe"><a href="#window-name-iframe" class="headerlink" title="window.name + iframe"></a>window.name + iframe</h4><ul>
+<h4 id="window-hash-iframe"><a href="#window-hash-iframe" class="headerlink" title="window.hash + iframe"></a>window.hash + iframe</h4><ul>
 <li>当进行跨域数据请求的时候，将数据拼接在 url 中，数据页面可以通过 location.hash 拿到</li>
 <li>实现了跨域数据的传递</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 数据页面</span></div><div class="line">&lt;script&gt;</div><div class="line">  alert(location.hash);</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">/</span><span class="regexp">/ 主页面</span></div><div class="line">&lt;iframe id="iframe" src="http://api.study.com/hash.html#name=xgg" frameborder="0"&gt;&lt;/iframe&gt;</div><div class="line"><span class="comment">// 弹出警告框  #name=xgg</span></div></pre></td></tr></table></figure>
-<h4 id="window-name-iframe-1"><a href="#window-name-iframe-1" class="headerlink" title="window.name + iframe"></a>window.name + iframe</h4><ul>
+<h4 id="window-name-iframe"><a href="#window-name-iframe" class="headerlink" title="window.name + iframe"></a>window.name + iframe</h4><ul>
 <li>当进行跨域数据请求的时候，数据页面可将数据赋值给 window.name，请求页面可以通过获取子页面的 window.name 拿到数据</li>
 <li>实现了跨域数据的传递</li>
 </ul>
@@ -360,7 +360,7 @@
         <p><span>本文标题:</span><a  href="/2017/08/27/11-同源和跨域/">同源和跨域</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 keyide 的个人博客">keyide</a></p>
         <p><span>发布时间:</span>2017年08月27日 - 15时11分</p>
-        <!-- <p><span>最后更新:</span>2017年09月16日 - 21时46分</p> -->
+        <!-- <p><span>最后更新:</span>2017年10月18日 - 21时09分</p> -->
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/08/27/11-同源和跨域/" title="同源和跨域">http://yoursite.com/2017/08/27/11-同源和跨域/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/27/11-同源和跨域/　　作者: keyide" title=""></span>
@@ -397,7 +397,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#同源和跨域"><span class="toc-number">1.</span> <span class="toc-text">同源和跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决跨域请求的方法"><span class="toc-number">2.</span> <span class="toc-text">解决跨域请求的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#document-domain-iframe"><span class="toc-number">2.1.</span> <span class="toc-text">document.domain + iframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-name-iframe"><span class="toc-number">2.2.</span> <span class="toc-text">window.name + iframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-name-iframe-1"><span class="toc-number">2.3.</span> <span class="toc-text">window.name + iframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-postMessage"><span class="toc-number">2.4.</span> <span class="toc-text">window.postMessage()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将数据通过-JS-进行直接加载"><span class="toc-number">2.5.</span> <span class="toc-text">将数据通过 JS 进行直接加载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jsonp"><span class="toc-number">3.</span> <span class="toc-text">jsonp</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#同源和跨域"><span class="toc-number">1.</span> <span class="toc-text">同源和跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决跨域请求的方法"><span class="toc-number">2.</span> <span class="toc-text">解决跨域请求的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#document-domain-iframe"><span class="toc-number">2.1.</span> <span class="toc-text">document.domain + iframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-hash-iframe"><span class="toc-number">2.2.</span> <span class="toc-text">window.hash + iframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-name-iframe"><span class="toc-number">2.3.</span> <span class="toc-text">window.name + iframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-postMessage"><span class="toc-number">2.4.</span> <span class="toc-text">window.postMessage()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将数据通过-JS-进行直接加载"><span class="toc-number">2.5.</span> <span class="toc-text">将数据通过 JS 进行直接加载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jsonp"><span class="toc-number">3.</span> <span class="toc-text">jsonp</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
